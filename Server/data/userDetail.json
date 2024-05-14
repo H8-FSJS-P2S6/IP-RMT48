@@ -4,9 +4,9 @@
         "phoneNumber": "088123456789",
         "address": "Jalan, jalan apa yang menyenangkan? jalan bersamamu",
         "city": "Jayapura",
-        "city_id": 158,
         "province": "Papua",
         "postalCode": 99114,
+        "CityId": 158,
         "UserId": 1
     }
 ]

@@ -5,7 +5,7 @@ class ProductController {
             const data = await Product.findAll();
             await res.status(200).json(data)
         } catch (error) {
-            console.log(error)
+            next(error);
         }
     }
 
@@ -13,9 +13,12 @@ class ProductController {
         try {
             const id = req.params.id
             const data = await Product.findByPk(id);
+            if (!data){
+                throw ({name: 'ProductNotFound'})
+            }
             await res.status(200).json(data)
         } catch (error) {
-            console.log(error)
+            next(error);
         }
     }
 
@@ -25,7 +28,7 @@ class ProductController {
             const newData = await Product.create({name, description, price, weight, imgUrl, CategoryId})
             res.status(201).json(newData)
         } catch (error) {
-            console.log(error)
+            next(error);
         }
     }
 
@@ -37,7 +40,7 @@ class ProductController {
             const updatedProduct = await product.update({name, description, price, weight, imgUrl, CategoryId});
             await res.status(200).json(updatedProduct)  
         } catch (error) {
-            console.log(error)
+            next(error);
         }
     }
 
@@ -49,7 +52,7 @@ class ProductController {
             const updatedProduct = await product.update({name, description, price, weight, imgUrl, CategoryId});
             await res.status(200).json(updatedProduct)  
         } catch (error) {
-            console.log(error)
+            next(error);
         }
     }
 }

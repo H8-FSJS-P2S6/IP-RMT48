@@ -9,7 +9,7 @@ class UserController {
             const newUser = await User.create({email, password});
             res.status(201).json({message: `user with email ${newUser.email} has been created`})
         } catch (error) {
-            console.log(error)
+            next(error);
         }
     }
 
@@ -35,7 +35,7 @@ class UserController {
             const access_token = signToken({id: user.id})
             res.status(200).send({access_token})
         } catch (error) {
-            console.log(error)
+            next(error);
         }
     }
 }

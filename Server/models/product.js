@@ -14,13 +14,82 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Product.init({
-    name: DataTypes.STRING,
-    description: DataTypes.TEXT,
-    price: DataTypes.INTEGER,
-    weight: DataTypes.INTEGER,
-    imgUrl: DataTypes.STRING,
-    CategoryId: DataTypes.INTEGER,
-    sizes: DataTypes.ARRAY(DataTypes.STRING)
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: "Name cannot be empty"
+        },
+        notEmpty: {
+          msg: "Name cannot be empty"
+        }
+      }
+    },
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: "Description cannot be empty"
+        },
+        notEmpty: {
+          msg: "Description cannot be empty"
+        }
+      }
+    },
+    price: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: "Price cannot be empty"
+        },
+        notEmpty: {
+          msg: "Price cannot be empty"
+        }
+      }
+    },
+    weight: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: "Weight cannot be empty"
+        },
+        notEmpty: {
+          msg: "Weight cannot be empty"
+        }
+      }
+    },
+    imgUrl: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: "Weight cannot be empty"
+        },
+        notEmpty: {
+          msg: "Weight cannot be empty"
+        }
+      }
+    },
+    CategoryId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: "Weight cannot be empty"
+        },
+        notEmpty: {
+          msg: "Weight cannot be empty"
+        }
+      }
+    },
+    sizes:  {
+      type: DataTypes.ARRAY(DataTypes.STRING),
+      defaultValue: ["S", "M", "L"]
+    }
   }, {
     sequelize,
     modelName: 'Product',

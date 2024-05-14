@@ -1,26 +1,12 @@
 [
     {
-        "email": "adminkarel@gmail.com",
-        "password":  "rahasia",
-        "role": "Admin",
-        "fullName": "karel",
-        "phoneNumber": "0",
-        "address": "J",
-        "city": "J",
-        "city_id": 1,
-        "province": "J",
-        "postalCode": 1
-    },
-    {
         "email": "testingUser@gmail.com",
         "password": "rahasia",
-        "role": "User",
-        "fullName": "alif cepmek",
-        "phoneNumber": "088123456789",
-        "address": "Jalan, jalan apa yang menyenangkan? jalan bersamamu",
-        "city": "Jayapura",
-        "city_id": 158,
-        "province": "Papua",
-        "postalCode": 99114
+        "role": "User"
+    },
+    {
+        "email": "adminKarel@gmail.com",
+        "password":  "rahasia",
+        "role": "Admin"
     }
 ]

@@ -1,0 +1,56 @@
+[
+    {
+        "name": "TECHNICAL POLO SHIRT",
+        "description": "Relaxed-fit shirt made of technical fabric. Featuring a collar with front opening and short sleeves.",
+        "price": 999900,
+        "weight": 130,
+        "imgUrl": "https://static.zara.net/assets/public/d38e/2a81/196f4d058c21/270dc236b4e0/07563860800-530-p/07563860800-530-p.jpg?ts=1715004744759&w=563",
+        "CategoryId": 1,
+        "sizes": ["S", "M", "L"]
+    },
+    {
+        "name": "SEERSUCKER PRINTED SHIRT",
+        "description": "Relaxed fit shirt. Spread collar and short sleeves. Split hem. Button-up front.",
+        "price": 799900,
+        "weight": 120,
+        "imgUrl": "https://static.zara.net/assets/public/e644/3ea1/361040099c35/b1603c7de11f/07380572020-530-p/07380572020-530-p.jpg?ts=1715004762195&w=563",
+        "CategoryId": 1,
+        "sizes": ["S", "M", "L"]
+    },
+    {
+        "name": "TEXTURED KNIT T-SHIRT",
+        "description": "Knit T-shirt made of spun textured chenille fabric. Round neck and short sleeves. Ribbed trims.",
+        "price": 799900,
+        "weight": 135,
+        "imgUrl": "https://static.zara.net/assets/public/e644/3ea1/361040099c35/b1603c7de11f/07380572020-530-p/07380572020-530-p.jpg?ts=1715004762195&w=563",
+        "CategoryId": 3,
+        "sizes": ["S", "M", "L"]
+    },
+    {
+        "name": "COTTON - LINEN TROUSERS",
+        "description": "Trousers made of a cotton and 28% linen blend. Elasticated waistband with adjustable drawstring. Front pockets and back welt pockets.",
+        "price": 799900,
+        "weight": 165,
+        "imgUrl": "https://static.zara.net/assets/public/0b05/1fd5/51c34b24a3be/6f49b7886a8a/08574435800-e1/08574435800-e1.jpg?ts=1705322422135&w=563",
+        "CategoryId": 2,
+        "sizes": ["S", "M", "L"]
+    },
+    {
+        "name": "QUARTER-ZIP SWEATSHIRT",
+        "description": "Long sleeve quarter-zip sweatshirt. Ribbed trims.",
+        "price": 699900,
+        "weight": 280,
+        "imgUrl": "https://static.zara.net/assets/public/ab3c/0d8c/5ee746fea91a/159369bcf023/06462410800-e1/06462410800-e1.jpg?ts=1699950969253&w=563",
+        "CategoryId": 4,
+        "sizes": ["S", "M", "L"]
+    },
+    {
+        "name": "PLEATED BERMUDA SHORTS WITH BELT",
+        "description": "Regular fit Bermuda shorts. Waist with belt and front pleated details. Front pockets and back welt pockets. Front zip fly and button fastening.",
+        "price": 799900,
+        "weight": 350,
+        "imgUrl": "https://static.zara.net/assets/public/e23c/1d41/90d247638b62/03e6ce482de2/06861201800-e2/06861201800-e2.jpg?ts=1712071189690&w=563",
+        "CategoryId": 5,
+        "sizes": ["S", "M", "L"]
+    }
+]

@@ -37,7 +37,7 @@ class OrderController{
                 include: [
                     { 
                         model: OrderDetail,
-                        attributes: ['id'], 
+                        attributes: ['id', 'size'], 
                         include: [Product]
                     }
                 ]

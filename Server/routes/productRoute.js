@@ -1,10 +1,8 @@
 const ProductController = require('../controllers/productController');
-const authenticationMiddleware = require('../middlewares/authenticationMiddleware');
 const authorizationMiddleware = require('../middlewares/authorizationMiddleware');
 
 const router = require('express').Router();
 
-router.use(authenticationMiddleware);
 router.get('/', ProductController.getAllProducts);
 router.get('/:id', ProductController.getOneProduct);
 router.use(authorizationMiddleware);

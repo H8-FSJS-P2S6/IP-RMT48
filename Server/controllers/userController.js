@@ -1,6 +1,6 @@
 const { comparePassword } = require("../helpers/bcrypt");
 const { signToken } = require("../helpers/jwt");
-const {User, UserDetail} = require("../models");
+const {User} = require("../models");
 
 class UserController {
     static async register(req, res, next){
@@ -39,18 +39,13 @@ class UserController {
         }
     }
 
-    static async createOrUpdateUserDetails(req, res, next){
+    static async updateUserDetails(req, res, next){
         try {
-            const UserId = req.user.id;
-            const userDetail = await UserDetail.findOne({where: {UserId}})
-            console.log(UserId, UserDetail)
+            const id = req.user.id;
+            const user = await User.findByPk(id)
             const {fullName, phoneNumber, address, city, province, postalCode, CityId} = req.body;
-            if (userDetail){
-                const data = await userDetail.update({fullName, phoneNumber, address, city, province, postalCode, CityId});
-                return res.status(200).json({data})
-            }
-            const data = await UserDetail.create({fullName, phoneNumber, address, city, province, postalCode, CityId, UserId});
-            res.status(201).json({data})
+            const data = await user.update({fullName, phoneNumber, address, city, province, postalCode, CityId});
+            res.status(200).json({message: "Your details has been updated"})
         } catch (error) {
             next(error)
         }

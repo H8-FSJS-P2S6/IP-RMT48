@@ -35,6 +35,10 @@ module.exports= function errorMiddleware(err, req, res, next) {
             status =  400;
             message = `${err.errors[0].message}`;
             break;  
+        case "notOnCart":
+            status =  403;
+            message = `Not allowed to change this order`;
+            break; 
         default:
             console.log(err); 
             status = 500;

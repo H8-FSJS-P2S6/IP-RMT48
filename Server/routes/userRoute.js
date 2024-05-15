@@ -6,6 +6,6 @@ const router = require('express').Router();
 router.post('/register', UserController.register);
 router.post('/login', UserController.login);
 router.use(authenticationMiddleware);
-router.post('/userDetails', UserController.createOrUpdateUserDetails)
+router.post('/userDetails', UserController.updateUserDetails)
 
 module.exports = router

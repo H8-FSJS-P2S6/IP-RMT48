@@ -2,7 +2,14 @@
     {
         "email": "testingUser@gmail.com",
         "password": "rahasia",
-        "role": "User"
+        "role": "User",
+        "fullName": "alif cepmek",
+        "phoneNumber": "088123456789",
+        "address": "Jalan, jalan apa yang menyenangkan? jalan bersamamu",
+        "city": "Jayapura",
+        "province": "Papua",
+        "postalCode": 99114,
+        "CityId": 158
     },
     {
         "email": "adminKarel@gmail.com",

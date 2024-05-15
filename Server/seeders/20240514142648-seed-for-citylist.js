@@ -20,11 +20,11 @@ module.exports = {
           delete e.province_id;
           return e
       });
-      await queryInterface.bulkInsert('CityLists', updatedData)
+      await queryInterface.bulkInsert('Cities', updatedData)
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.bulkDelete('CityLists', null, {
+    await queryInterface.bulkDelete('Cities', null, {
       restartIdentity: true,
       cascade: true,
       truncate: true

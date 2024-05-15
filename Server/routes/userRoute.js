@@ -3,8 +3,9 @@ const authenticationMiddleware = require('../middlewares/authenticationMiddlewar
 
 const router = require('express').Router();
 
-router.post('/register', UserController.register)
-router.post('/login', UserController.login)
+router.post('/register', UserController.register);
+router.post('/login', UserController.login);
 router.use(authenticationMiddleware);
+router.post('/userDetails', UserController.createOrUpdateUserDetails)
 
 module.exports = router

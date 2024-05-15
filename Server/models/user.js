@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       User.hasMany(models.Order)
-      User.belongsTo(models.Cart)
+      User.hasOne(models.City)
     }
   }
   User.init({
@@ -54,7 +54,14 @@ module.exports = (sequelize, DataTypes) => {
     role: {
       type: DataTypes.STRING,
       defaultValue: 'User'
-    }
+    },
+    fullName: DataTypes.STRING,
+    phoneNumber: DataTypes.STRING,
+    address: DataTypes.STRING,
+    city: DataTypes.STRING,
+    province: DataTypes.STRING,
+    postalCode: DataTypes.INTEGER,
+    CityId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'User',

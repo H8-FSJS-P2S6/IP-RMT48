@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+body {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  background-image: url('./assets/hero.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  background-attachment: fixed;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  margin: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+}
+
+.card__container{
+  width: 80vw;
+  margin: 90px auto 0; 
+  gap: 20px;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.card img{
+  width: 100%;
+  object-fit: cover;
+  max-height: 350px;
+}
+
+
+
+.card {
+  position: relative; /* Ensure it has positioning context */
+  z-index: 1; /* Lower z-index because it should be below the sidebar */
+}

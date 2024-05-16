@@ -1,8 +1,13 @@
-const {Product} = require('../models')
+const {Product, Category} = require('../models')
 class ProductController {
     static async getAllProducts (req, res, next){
         try {
-            const data = await Product.findAll();
+            const data = await Product.findAll({
+                include: {
+                    model: Category,
+                    attributes: ['name']
+                }
+            });
             await res.status(200).json(data)
         } catch (error) {
             next(error);

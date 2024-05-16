@@ -15,10 +15,7 @@ export default function Home(){
     console.log(products, "ini products")
     return (  
         <div className='card__container flex'>
-            
-
             {products && products.map(e => (<Card key={e.id} product={e}/>))}
-
         </div>
     )
 }

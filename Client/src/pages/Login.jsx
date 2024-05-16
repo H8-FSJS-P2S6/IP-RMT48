@@ -36,8 +36,8 @@ export default function Login() {
       }
   }
   return (
-    <>
-      <div className="container flex flex-col mx-auto bg-white pt-12 my-5">
+    <div className="container-fluid flex w-full h-screen justify-center items-center">
+      <div className="container login__container flex flex-col mx-auto bg-white">
         <div className="flex justify-center w-full h-full my-auto xl:gap-14 lg:justify-normal md:gap-5 draggable">
           <div className="flex items-center justify-center w-full lg:p-12">
             <div className="flex items-center xl:p-10">
@@ -104,6 +104,6 @@ export default function Login() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

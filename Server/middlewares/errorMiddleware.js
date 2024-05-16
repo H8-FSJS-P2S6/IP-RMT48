@@ -7,6 +7,10 @@ module.exports= function errorMiddleware(err, req, res, next) {
             status =  404;
             message = `Product not found`;
             break;
+        case "OrderNotFound":
+            status =  404;
+            message = `Product not found`;
+            break;
         case "NoAccess":
             status =  403;
             message = `You have no access to this page`;
@@ -34,6 +38,10 @@ module.exports= function errorMiddleware(err, req, res, next) {
         case "SequelizeUniqueConstraintError":
             status =  400;
             message = `${err.errors[0].message}`;
+            break;  
+        case "sizeNotFound":
+            status =  400;
+            message = `Please select your preferred size`;
             break;  
         case "notOnCart":
             status =  403;

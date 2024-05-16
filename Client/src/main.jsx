@@ -7,6 +7,7 @@ import App from "./App.jsx";
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
 import Cart from "./pages/Cart.jsx";
+import AddProductToCart from "./pages/AddProductToCart.jsx";
 
 const router = createBrowserRouter([
 
@@ -26,10 +27,10 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      <>
+      <div className="container-fluid min-h-screen m-0 p-0">
         <Navbar />
         <Outlet />
-      </>
+      </div>
     ),
     loader: () => {
       const token = localStorage.getItem('access_token');
@@ -44,7 +45,11 @@ const router = createBrowserRouter([
       {
         path: '/myCart',
         element: <Cart />
-      }
+      },
+      {
+        path: '/addProduct/:id',
+        element: <AddProductToCart />
+      },
     ]
   },
 

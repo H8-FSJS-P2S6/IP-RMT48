@@ -6,6 +6,10 @@ class OrderController{
             const UserId = req.user.id;
             const ProductId = req.params.productId;
             const {size} = req.body;
+
+            if (!size) {
+                throw ({name: "sizeNotFound"})
+            }
             const order = await Order.findOrCreate({
                 where: {UserId, status: 'onCart'},
                 defaults: {status: 'onCart'}
@@ -52,8 +56,11 @@ class OrderController{
     static async getOrderDetailsById (req, res, next){
         try {
             const id = req.params.orderDetailsId;
-            const orderDetail = await OrderDetail.findByPk(id, {
-                include: {model: Order}
+            const orderDetail = await OrderDetail.findOne({
+                where: {id},
+                include: {
+                    model: Order
+                }
             });
             if (!orderDetail) {
                 throw ({name: "OrderNotFound"})
@@ -68,8 +75,11 @@ class OrderController{
         try {
             const id = req.params.orderDetailsId;
             const {size} = req.body
-            const orderDetail = await OrderDetail.findByPk(id, {
-                include: {model: Order}
+            const orderDetail = await OrderDetail.findOne({
+                where: {id},
+                include: {
+                    model: Order
+                }
             });
             if (!orderDetail) {
                 throw ({name: "OrderNotFound"})
@@ -88,10 +98,14 @@ class OrderController{
     static async deleteCart(req, res, next){
         try {
             const id = req.params.orderDetailsId;
-            const {size} = req.body
-            const orderDetail = await OrderDetail.findByPk(id, {
-                include: {model: Order}
+            const orderDetail = await OrderDetail.findOne({
+                where: {id},
+                include: {
+                    model: Order
+                }
             });
+
+            console.log(id, orderDetail)
             if (!orderDetail) {
                 throw ({name: "OrderNotFound"})
             }
@@ -100,7 +114,7 @@ class OrderController{
             }
 
             await orderDetail.destroy()
-            res.status(200).json({message: "successfully update order's size"})
+            res.status(200).json({message: `successfully removed selected item from your cart`})
         } catch (error) {
             next(error);
         }

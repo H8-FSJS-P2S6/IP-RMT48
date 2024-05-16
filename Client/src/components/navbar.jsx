@@ -1,8 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./navbar.css";
 export default function Navbar() {
+  const nav = useNavigate();
+  const handleLogout = () => {
+    localStorage.removeItem('access_token');
+    nav('/login')
+  }
   return (
-    <div className="drawer rounded-full">
+    <div className="sticky drawer rounded-full">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col">
         {/* Navbar */}
@@ -47,7 +52,7 @@ export default function Navbar() {
               </li>
               <li>
                 <button>
-                  <a className="nav__link">logout</a>
+                  <a className="nav__link" onClick={handleLogout}>logout</a>
                 </button>
               </li>
             </ul>

@@ -15,7 +15,7 @@ const productSlice = createSlice({
     }
 })
 
-export const {setFetchProducts} = productSlice.actions;
+const {setFetchProducts} = productSlice.actions;
 
 export const fetchProducts = () => {
     return async (dispatch) => {
@@ -34,4 +34,12 @@ export const fetchProducts = () => {
 
     }
 }
+
+// export const addToCart = () => {
+//     return async (dispatch) => {
+//         const {data} = await axiosInstance({
+//             method: 'POST'
+//         })
+//     }
+// }
 export default productSlice.reducer

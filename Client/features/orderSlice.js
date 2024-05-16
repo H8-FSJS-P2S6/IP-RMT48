@@ -2,36 +2,36 @@ import { createSlice } from '@reduxjs/toolkit'
 import axiosInstance from '../src/utils/axios';
 
 const initialState = {
-  list: [],
+  data: {},
 };
 
-const productSlice = createSlice({
-    name: 'product',
+
+const orderSlice = createSlice({
+    name: 'order',
     initialState,
     reducers: {
-        setFetchProducts: (state, {payload}) => {
-            state.list = payload;
+        setFetchOrders: (state, {payload}) => {
+            state.data = payload
         }
     }
 })
 
-export const {setFetchProducts} = productSlice.actions;
+const {setFetchOrders} = orderSlice.actions;
 
-export const fetchProducts = () => {
+export const fetchOrders = () => {
     return async (dispatch) => {
         try {
             const {data} = await axiosInstance({
                 method: 'get',
-                url: '/products',
+                url: '/orders?filter=onCart',
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('access_token')}`
                 }
             })
-            dispatch(setFetchProducts(data))
+            dispatch(setFetchOrders(data))
         } catch (error) {
             console.log(error)
         }
-
     }
 }
-export default productSlice.reducer
+export default orderSlice.reducer

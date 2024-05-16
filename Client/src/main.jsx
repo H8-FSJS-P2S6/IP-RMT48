@@ -1,21 +1,53 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter } from "react-router-dom";
+import { Outlet, createBrowserRouter, redirect } from "react-router-dom";
 import Navbar from "./components/navbar.jsx";
 import Home from "./pages/Home.jsx";
 import App from "./App.jsx";
-import './index.css'
+import Login from "./pages/Login.jsx";
+import Register from "./pages/Register.jsx";
+import Cart from "./pages/Cart.jsx";
 
 const router = createBrowserRouter([
+
+  {
+    path: "/register",
+    element: <Register />
+  },
+  {
+    path: "/login",
+    element: <Login />,
+    loader: () => {
+      const token = localStorage.getItem('access_token');
+      if (token) return redirect('/');
+      return null
+    }
+  },
   {
     path: "/",
     element: (
       <>
         <Navbar />
-        <Home />
+        <Outlet />
       </>
     ),
+    loader: () => {
+      const token = localStorage.getItem('access_token');
+      if (!token) return redirect('/login');
+      return null
+    },
+    children: [
+      {
+        path: '/',
+        element: <Home />
+      },
+      {
+        path: '/myCart',
+        element: <Cart />
+      }
+    ]
   },
+
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

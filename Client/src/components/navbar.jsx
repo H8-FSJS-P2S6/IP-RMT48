@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./navbar.css";
 export default function Navbar() {
   return (
@@ -27,7 +28,7 @@ export default function Navbar() {
               </svg>
             </label>
           </div>
-          <div className="flex-1 px-2 mx-2">Fashionate</div>
+          <div className="flex-1 px-2 mx-2"> <Link to="/">Fashionate</Link></div>
           <div className="flex-none hidden lg:block">
             <ul className="menu menu-horizontal">
               {/* Navbar menu content here */}
@@ -39,14 +40,14 @@ export default function Navbar() {
                 />
               </div>
               <li>
-                <a>My Orders</a>
+                <a className="nav__link">My Orders</a>
               </li>
               <li>
-                <a>Cart</a>
+                <Link to={'/myCart'} className="nav__link">Cart</Link>
               </li>
               <li>
                 <button>
-                  <a>logout</a>
+                  <a className="nav__link">logout</a>
                 </button>
               </li>
             </ul>

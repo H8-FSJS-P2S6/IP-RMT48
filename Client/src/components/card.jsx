@@ -1,25 +1,28 @@
+import { Link } from "react-router-dom";
 
 
-export default function Card() {
+export default function Card({product}) {
   return (
-    <div className="card w-96 bg-base-100 shadow-xl z-0">
+    <div className="card v__card w-96 bg-base-100 shadow-xl z-0 rounded-lg">
+      <Link>
       <figure>
         <img
-          src="https://static.zara.net/assets/public/d38e/2a81/196f4d058c21/270dc236b4e0/07563860800-530-p/07563860800-530-p.jpg?ts=1715004744759&w=563"
+          src={product.imgUrl}
           alt="Shoes"
         />
       </figure>
       <div className="card-body">
         <h2 className="card-title">
-          Shoes!
-          <div className="badge badge-secondary">NEW</div>
+          {product.name}
+          {/* <div className="badge badge-secondary">NEW</div> */}
         </h2>
-        <p>If a dog chews shoes whose shoes does he choose?</p>
+        <p>{product.description}</p>
         <div className="card-actions justify-end">
-          <div className="badge badge-outline">Fashion</div>
-          <div className="badge badge-outline">Products</div>
+          <div className="badge badge-outline">{product.Category.name}</div>
+          {/* <div className="badge badge-outline">Products</div> */}
         </div>
       </div>
+      </Link>
     </div>
   );
 }

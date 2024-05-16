@@ -51,6 +51,9 @@ export default function Navbar() {
                 <Link to={'/myCart'} className="nav__link">Cart</Link>
               </li>
               <li>
+                <Link to={'/myCart'} className="nav__link">Profile</Link>
+              </li>
+              <li>
                 <button>
                   <a className="nav__link" onClick={handleLogout}>logout</a>
                 </button>
@@ -76,15 +79,23 @@ export default function Navbar() {
                   className="input input-bordered w-24 h-10 md:w-auto"
                 />
               </div>
-          <li>
-            <a>My Orders</a>
-          </li>
-          <li>
-            <a>Cart</a>
-          </li>
-          <li>
-            <button>logout</button>
-          </li>
+              <li>
+                <Link to={'/'} className="nav__link">Home</Link>
+              </li>
+              <li>
+                <a className="nav__link">My Orders</a>
+              </li>
+              <li>
+                <Link to={'/myCart'} className="nav__link">Cart</Link>
+              </li>
+              <li>
+                <Link to={'/myCart'} className="nav__link">Profile</Link>
+              </li>
+              <li>
+                <button>
+                  <a className="nav__link" onClick={handleLogout}>logout</a>
+                </button>
+              </li>
         </ul>
       </div>
        {/* drawer */}

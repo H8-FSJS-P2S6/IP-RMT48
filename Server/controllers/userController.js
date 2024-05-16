@@ -39,12 +39,22 @@ class UserController {
         }
     }
 
+    static async getUserDetails(req, res, next){
+        try {
+            const id = req.user.id;
+            const user = await User.findByPk(id);
+            res.status(200).json({user})
+        } catch (error) {
+            next(error)
+        }
+    }
+
     static async updateUserDetails(req, res, next){
         try {
             const id = req.user.id;
             const user = await User.findByPk(id)
             const {fullName, phoneNumber, address, city, province, postalCode, CityId} = req.body;
-            const data = await user.update({fullName, phoneNumber, address, city, province, postalCode, CityId});
+            await user.update({fullName, phoneNumber, address, city, province, postalCode, CityId});
             res.status(200).json({message: "Your details has been updated"})
         } catch (error) {
             next(error)

@@ -158,3 +158,12 @@ body::before {
   color: white;
   transition: 0.3s;
 }
+
+.drawer-side {
+  /* position: relative; */
+  z-index: 1000;
+}
+
+.drawer-overlay {
+  z-index: 1001; 
+}

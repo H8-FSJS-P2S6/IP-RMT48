@@ -11,18 +11,18 @@ export function UserDetail() {
   const nav = useNavigate();
 
   const [newUser, setNewUser] = useState({
-    fullName: "", 
-    phoneNumber: "", 
-    address: "", 
-    province: "", 
-    postalCode: "", 
-    CityId: ""
-  })
+    fullName: "",
+    phoneNumber: "",
+    address: "",
+    province: "",
+    postalCode: "",
+    CityId: "",
+  });
 
   const handleChange = (event) => {
-    const {name, value} = event.target;
-    setNewUser(prevUser => ({...prevUser, [name]: value}))
-  }
+    const { name, value } = event.target;
+    setNewUser((prevUser) => ({ ...prevUser, [name]: value }));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,14 +35,16 @@ export function UserDetail() {
   };
 
   useEffect(() => {
-    dispatch(fetchUser()).then((res) => setNewUser({
-        fullName: res.user.fullName, 
-        phoneNumber: res.user.phoneNumber, 
-        address: res.user.address, 
-        province: res.user.province, 
-        postalCode: res.user.postalCode, 
-        CityId: res.user.CityId
-    }))
+    dispatch(fetchUser()).then((res) =>
+      setNewUser({
+        fullName: res.user.fullName,
+        phoneNumber: res.user.phoneNumber,
+        address: res.user.address,
+        province: res.user.province,
+        postalCode: res.user.postalCode,
+        CityId: res.user.CityId,
+      })
+    );
 
     dispatch(fetchCities());
   }, [dispatch]);
@@ -66,7 +68,7 @@ export function UserDetail() {
                   name="fullName"
                   defaultValue={newUser.fullName}
                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                onChange={handleChange}
+                  onChange={handleChange}
                 />
               </div>
 
@@ -112,14 +114,15 @@ export function UserDetail() {
                   City
                 </label>
                 <select name="CityId" onChange={handleChange} id="CityId">
-                <option value={newUser.CityId}>{user.user.City.cityName}</option>
-                {Array.isArray(cities.cities) &&
+                  <option value={newUser.CityId}>
+                    {user.user.City.cityName ? user.user.City.cityName : ""}
+                  </option>
+                  {Array.isArray(cities.cities) &&
                     cities.cities.map((city) => (
                       <option id="cities" key={city.id} value={city.id}>
                         {city.cityName}
                       </option>
                     ))}
-                    
                 </select>
               </div>
 

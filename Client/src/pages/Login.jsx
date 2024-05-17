@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify';
 import axiosInstance from "../utils/axios";
@@ -7,6 +7,37 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const nav = useNavigate();
+
+  async function handleCredentialResponse(response) {
+    try {
+      console.log("Encoded JWT ID token: " + response.credential);
+      const googleToken = response.credential;
+      console.log({googleToken})
+      const {data} = await axiosInstance({
+        method: 'post',
+        url: '/googleLogin',
+        data: {googleToken}
+        
+      })
+      localStorage.setItem("access_token", data.access_token)
+      nav('/')
+    } catch (error) {
+      console.log(error)
+    }
+
+  }
+  useEffect(() => {
+
+      window.google.accounts.id.initialize({
+        client_id: "696766713892-4ga56n66g0qnmqfihmd2k2v0660d868u.apps.googleusercontent.com",
+        callback: handleCredentialResponse
+      });
+      window.google.accounts.id.renderButton(
+        document.getElementById("buttonDiv"),
+        { theme: "outline", size: "large" }  
+      );
+      window.google.accounts.id.prompt(); 
+  }, [])
 
   const handleSubmit = async (event) => {
       event.preventDefault()
@@ -48,14 +79,7 @@ export default function Login() {
                 <p className="mb-4 text-grey-700">
                   Enter your email and password
                 </p>
-                <a className="flex items-center justify-center w-full py-4 mb-6 text-sm font-medium transition duration-300 rounded-2xl text-grey-900 bg-grey-300 hover:bg-grey-400 focus:ring-4 focus:ring-grey-300">
-                  <img
-                    className="h-5 mr-2"
-                    src="https://raw.githubusercontent.com/Loopple/loopple-public-assets/main/motion-tailwind/img/logos/logo-google.png"
-                    alt=""
-                  />
-                  Sign in with Google
-                </a>
+                <div id="buttonDiv"></div>
                 <div className="flex items-center mb-3">
                   <hr className="h-0 border-b border-solid border-grey-500 grow" />
                   <p className="mx-4 text-grey-600">or</p>

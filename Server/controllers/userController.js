@@ -1,6 +1,6 @@
 const { comparePassword } = require("../helpers/bcrypt");
 const { signToken } = require("../helpers/jwt");
-const {User} = require("../models");
+const {User, City} = require("../models");
 
 class UserController {
     static async register(req, res, next){
@@ -42,7 +42,12 @@ class UserController {
     static async getUserDetails(req, res, next){
         try {
             const id = req.user.id;
-            const user = await User.findByPk(id);
+            const user = await User.findByPk(id, {
+                attributes: { exclude: ['password'] },
+                include: {
+                    model: City
+                }
+              });
             res.status(200).json({user})
         } catch (error) {
             next(error)
@@ -53,8 +58,8 @@ class UserController {
         try {
             const id = req.user.id;
             const user = await User.findByPk(id)
-            const {fullName, phoneNumber, address, city, province, postalCode, CityId} = req.body;
-            await user.update({fullName, phoneNumber, address, city, province, postalCode, CityId});
+            const {fullName, phoneNumber, address, province, postalCode, CityId} = req.body;
+            await user.update({fullName, phoneNumber, address, province, postalCode, CityId});
             res.status(200).json({message: "Your details has been updated"})
         } catch (error) {
             next(error)

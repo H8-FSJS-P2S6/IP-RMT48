@@ -15,7 +15,7 @@ export default function HorizontalCard({order, onDelete, onUpdate}){
         </figure>
         <div className="card-body">
           <h2 className="card-title">{order.Product.name}</h2>
-          <p>Price: {order.Product.description}</p>
+          <p>{order.Product.description}</p>
           <p>Price: {order.Product.price}</p>
           <p>Size: {order.size}</p>
           <div className="card-actions justify-end">

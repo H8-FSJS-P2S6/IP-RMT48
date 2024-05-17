@@ -1,11 +1,19 @@
 import { Link, useNavigate } from "react-router-dom";
 import "./navbar.css";
+import { setSearch } from "../../features/productSlice";
+import { useDispatch } from "react-redux";
 export default function Navbar() {
+  const dispatch = useDispatch();
   const nav = useNavigate();
   const handleLogout = () => {
     localStorage.removeItem('access_token');
     nav('/login')
   }
+
+  const onChange = (e) => {
+    dispatch(setSearch(e.target.value))
+  }
+
   return (
     <div className="sticky drawer rounded-full">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
@@ -42,6 +50,7 @@ export default function Navbar() {
                   type="text"
                   placeholder="Search"
                   className="input input-bordered w-24 h-10 md:w-auto"
+                  onChange={onChange}
                 />
               </div>
               <li>
@@ -51,7 +60,7 @@ export default function Navbar() {
                 <Link to={'/myCart'} className="nav__link">Cart</Link>
               </li>
               <li>
-                <Link to={'/myCart'} className="nav__link">Profile</Link>
+                <Link to={'/profile'} className="nav__link">Profile</Link>
               </li>
               <li>
                 <button>
@@ -89,7 +98,7 @@ export default function Navbar() {
                 <Link to={'/myCart'} className="nav__link">Cart</Link>
               </li>
               <li>
-                <Link to={'/myCart'} className="nav__link">Profile</Link>
+                <Link to={'/profile'} className="nav__link">Profile</Link>
               </li>
               <li>
                 <button>

@@ -23,9 +23,8 @@ class PaymentController {
 
             let snap = new midtransClient.Snap({
                 isProduction : false,
-                serverKey : process.env.MIDTRANS_SERVER_KEY
+                serverKey :process.env.MIDTRANS_SERVER_KEY
             });
-        
             let parameter = {
                 "transaction_details": {
                     "order_id": order.id,
@@ -35,8 +34,6 @@ class PaymentController {
                     "secure" : true
                 },
                 "customer_details": {
-                    "first_name": "budi",
-                    "last_name": "pratama",
                     "email": user.email,
                     "phone": user.phoneNumber
                 }
@@ -45,10 +42,10 @@ class PaymentController {
         //  update order
 
         
-            // const transaction = await snap.createTransaction(parameter)
-            // let transactionToken = transaction.token;
-            // console.log('transactionToken:',transactionToken);
-            res.json({parameter})
+        const transaction = await snap.createTransaction(parameter)
+        let transactionToken = transaction.token;
+        console.log('transactionToken:',transactionToken);
+            res.json({transactionToken})
         } catch (error) {
             next(error)
         }

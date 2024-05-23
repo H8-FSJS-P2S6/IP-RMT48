@@ -54,7 +54,7 @@ export default function Navbar() {
                 />
               </div>
               <li>
-                <Link className="nav__link">My Orders</Link>
+                <Link to={'/myOrders'} className="nav__link">My Orders</Link>
               </li>
               <li>
                 <Link to={'/myCart'} className="nav__link">Cart</Link>

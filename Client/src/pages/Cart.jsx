@@ -82,7 +82,13 @@ export default function Cart() {
           <button id="" onClick={handleClick} className="checkout-button">Checkout</button>
         </div>
         <div className="card__container flex">
-          { order.OrderDetails ? 
+          { (!order || !order.OrderDetails) ? 
+            <div className="card h__card lg:card-side bg-base-100 shadow-xl">
+            <div className="card-body">
+              <h2 className="card-title">Cart is Empty</h2>
+            </div>
+          </div>
+            : 
             order.OrderDetails.map((e) => (
               <HorizontalCard
                 onDelete={handleDelete}
@@ -91,12 +97,7 @@ export default function Cart() {
                 order={e}
               />
             ))
-            : 
-              <div className="card h__card lg:card-side bg-base-100 shadow-xl">
-              <div className="card-body">
-                <h2 className="card-title">Cart is Empty</h2>
-              </div>
-            </div>
+              
           }
         </div>
       </div>
